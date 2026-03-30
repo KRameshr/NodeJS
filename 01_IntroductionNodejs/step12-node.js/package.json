@@ -1,0 +1,23 @@
+{
+  "name": "step12-node",
+  "version": "1.0.0",
+  "description": "node creation projection with external files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KRameshr/nodejs-learning/blob/main/03_FileSystem"
+  },
+  "keywords": [
+    "Ramesh",
+    "fetch",
+    "axios"
+  ],
+  "author": "krameshr",
+  "license": "ISC",
+  "dependencies": {
+    "fetch": "^1.1.0"
+  }
+}

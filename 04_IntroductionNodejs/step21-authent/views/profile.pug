@@ -1,0 +1,284 @@
+//- doctype html
+//- html(lang="en")
+//-   head
+//-     meta(charset="UTF-8")
+//-     meta(name="viewport" content="width=device-width, initial-scale=1.0")
+//-     title Profile | ZonetoCode
+//-     link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0")
+//-     style.
+//-       * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+//-       body { background-color: #f4f7f6; min-height: 100vh; display: flex; flex-direction: column; }
+//-       .navbar { background: #008080; padding: 0.8rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; transition: 0.3s; }
+//-       .navbar strong { color: white; font-size: 1.4rem; cursor: pointer; }
+//-       .nav-links a { color: white; text-decoration: none; margin-left: 25px; font-size: 14px; opacity: 0.8; }
+//-       .logout-link { background: rgba(255,255,255,0.15); padding: 7px 18px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.3); }
+
+//-       .profile-wrapper { max-width: 900px; margin: 40px auto; width: 95%; flex: 1; }
+//-       .profile-header { background: white; border-radius: 16px; padding: 40px; display: flex; align-items: center; gap: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 30px; }
+//-       .avatar-circle { width: 100px; height: 100px; background: #e0f2f1; color: #008080; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: bold; }
+      
+//-       .info-card { background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #eee; position: relative; margin-bottom: 20px; }
+//-       .info-card h3 { font-size: 0.85rem; color: #888; text-transform: uppercase; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+//-       .detail-view p { font-size: 1.1rem; color: #222; font-weight: 600; margin-bottom: 15px; }
+
+//-       .input-wrapper { position: relative; width: 100%; }
+//-       input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; outline: none; transition: 0.3s; margin-top: 5px; }
+//-       input:focus { border-color: #008080; }
+//-       .toggle-pass { position: absolute; right: 12px; top: 38px; cursor: pointer; color: #888; user-select: none; }
+
+//-       .action-btns { display: flex; gap: 12px; margin-top: 20px; }
+//-       .btn-action { padding: 10px 22px; background: #008080; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+//-       .btn-dark { background: #333; }
+//-       .btn-outline { background: transparent; border: 1px solid #ccc; color: #666; }
+      
+//-       .status-msg { padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; font-weight: 500; }
+//-       .error { background: #fdeded; color: #d32f2f; }
+//-       footer { background: #004d4d; color: white; padding: 30px; text-align: center; margin-top: auto; }
+
+//-   body
+//-     nav.navbar#navbar
+//-       strong(onclick="window.location.href='/'") ZonetoCode
+//-       .nav-links
+//-         a(href="/dashboard") Dashboard
+//-         a.logout-link(href="/logout") Logout
+
+//-     .profile-wrapper
+//-       if user
+//-         if error
+//-           .status-msg.error
+//-             span.material-symbols-outlined report
+//-             | #{error}
+        
+//-         .profile-header
+//-           .avatar-circle= user.firstname ? user.firstname.charAt(0).toUpperCase() : '?'
+//-           .user-info
+//-             h1#welcomeText Welcome, #{user.firstname}!
+//-             p Manage your account settings and credentials.
+//-             span.badge(style="display:inline-block; padding:4px 12px; background:#008080; color:white; border-radius:20px; font-size:12px; margin-top:10px;") Active Developer
+
+//-         //- SECTION 1: PERSONAL INFORMATION & ACTION BUTTONS
+//-         .info-card
+//-           h3 📝 Personal Information
+          
+//-           #profileDetails.detail-view
+//-             div
+//-               label(style="font-size:12px; color:#888;") Full Name
+//-               p#displayFullName #{user.firstname}
+//-             div
+//-               label(style="font-size:12px; color:#888;") Email Address
+//-               p#displayEmail= user.email
+            
+//-             //- Buttons side-by-side
+//-             .action-btns
+//-               button.btn-action#editProfileBtn
+//-                 span.material-symbols-outlined edit
+//-                 | Update Profile
+//-               button.btn-action.btn-dark#showPassBtn
+//-                 span.material-symbols-outlined lock_reset
+//-                 | Change Password
+
+//-           //- Edit Form (Hidden by default - No Last Name)
+//-           form#profileForm(style="display: none; margin-top: 20px; flex-direction: column; gap: 15px;")
+//-             div
+//-               label(style="font-size:12px; color:#888;") First Name
+//-               input(type="text" name="firstname" value=user.firstname required)
+//-             div
+//-               label(style="font-size:12px; color:#888;") Email Address
+//-               input(type="email" name="email" value=user.email required)
+//-             div(style="display:flex; align-items:center; gap:10px; margin-top:10px;")
+//-               button.btn-action(type="submit") Save Changes
+//-               button.btn-action.btn-outline#cancelEditBtn(type="button") Cancel
+//-               span#updateMsg
+
+//-         //- SECTION 2: PASSWORD FORM (Hidden)
+//-         #passwordSection(style="display: none; margin-top: 20px;")
+//-           .info-card
+//-             h3 🔐 Change Password
+//-             form(action="/change-password" method="POST" style="margin-top: 20px; max-width: 400px;")
+//-               div(style="margin-bottom: 15px;")
+//-                 .input-wrapper
+//-                   label Current Password
+//-                   input(type="password" name="currentPassword" required class="pass-input")
+//-                   span.material-symbols-outlined.toggle-pass visibility_off
+//-               div(style="margin-bottom: 20px;")
+//-                 .input-wrapper
+//-                   label New Password
+//-                   input(type="password" name="newPassword" required class="pass-input")
+//-                   span.material-symbols-outlined.toggle-pass visibility_off
+              
+//-               div(style="display:flex; gap:10px;")
+//-                 button.btn-action(type="submit") Save New Password
+//-                 button.btn-action.btn-outline#cancelPassBtn(type="button") Cancel
+
+//-       else
+//-         .info-card(style="text-align: center; padding: 50px;")
+//-           h3 Session Expired.
+//-           a.btn-action(href="/login" style="margin-top:20px;") Login
+
+//-     footer
+//-       p © 2026 ZonetoCode. Built for Developers.
+
+//-     script.
+//-       // --- 1. Password Visibility Toggle ---
+//-       document.querySelectorAll('.toggle-pass').forEach(icon => {
+//-         icon.addEventListener('click', function() {
+//-           const input = this.previousElementSibling;
+//-           const isPass = input.type === 'password';
+//-           input.type = isPass ? 'text' : 'password';
+//-           this.textContent = isPass ? 'visibility' : 'visibility_off';
+//-         });
+//-       });
+
+//-       // --- 2. Profile View/Edit Toggle ---
+//-       const profileDetails = document.getElementById('profileDetails');
+//-       const profileForm = document.getElementById('profileForm');
+//-       const passSection = document.getElementById('passwordSection');
+      
+//-       document.getElementById('editProfileBtn').addEventListener('click', () => {
+//-         profileDetails.style.display = 'none';
+//-         profileForm.style.display = 'flex';
+//-         passSection.style.display = 'none';
+//-       });
+
+//-       document.getElementById('cancelEditBtn').addEventListener('click', () => {
+//-         profileDetails.style.display = 'block';
+//-         profileForm.style.display = 'none';
+//-       });
+
+//-       // --- 3. AJAX Profile Update ---
+//-       profileForm.addEventListener('submit', async (e) => {
+//-         e.preventDefault();
+//-         const msg = document.getElementById('updateMsg');
+//-         const formData = new URLSearchParams(new FormData(profileForm));
+        
+//-         try {
+//-           const response = await fetch('/update-profile', { method: 'POST', body: formData });
+//-           const res = await response.json();
+//-           if(res.success) {
+//-             msg.style.color = "green";
+//-             msg.textContent = "Saved! ✅";
+//-             document.getElementById('displayFullName').textContent = res.user.firstname;
+//-             document.getElementById('displayEmail').textContent = res.user.email;
+//-             document.getElementById('welcomeText').textContent = `Welcome, ${res.user.firstname}!`;
+            
+//-             setTimeout(() => {
+//-               msg.textContent = "";
+//-               profileDetails.style.display = 'block';
+//-               profileForm.style.display = 'none';
+//-             }, 1000);
+//-           }
+//-         } catch(err) { msg.textContent = "Error."; }
+//-       });
+
+//-       // --- 4. Password Section Toggle ---
+//-       document.getElementById('showPassBtn').addEventListener('click', () => {
+//-         passSection.style.display = 'block';
+//-         profileForm.style.display = 'none';
+//-         profileDetails.scrollIntoView({ behavior: 'smooth' });
+//-       });
+      
+//-       document.getElementById('cancelPassBtn').addEventListener('click', () => {
+//-         passSection.style.display = 'none';
+//-       });
+
+//-       if ("#{error}") passSection.style.display = 'block';
+
+
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Profile | ZonetoCode
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined")
+    link(rel="stylesheet", href="/css/index.css")
+  body
+    nav.navbar#navbar
+      strong(onclick="window.location.href='/'") ZonetoCode
+      span.material-symbols-outlined.menu-icon#menuBtn(onclick="toggleMenu()") menu
+      .nav-links#navLinks
+        a(href="/dashboard") Dashboard
+        a.logout-link(href="/logout") Logout
+
+    .profile-wrapper
+      if user
+        //- Status Messages (Green for Success, Red for Error)
+        if error
+          .status-msg.error
+            span.material-symbols-outlined report
+            | #{error}
+        if success
+          .status-msg.success
+            span.material-symbols-outlined check_circle
+            | #{success}
+        
+        .profile-header
+          .avatar-circle= user.firstname ? user.firstname.charAt(0).toUpperCase() : '?'
+          .user-info
+            h1#welcomeText Welcome, #{user.firstname}!
+            p Manage your account settings and credentials.
+            span.badge Active Developer
+
+        //- SECTION 1: PERSONAL INFORMATION
+        .info-card
+          h3 Personal Information
+          
+          #profileDetails.detail-view
+            .detail-item
+              label Full Name
+              p#displayFullName #{user.firstname}
+            .detail-item
+              label Email Address
+              p#displayEmail= user.email
+            
+            .action-btns
+              button.btn-action#editProfileBtn
+                span.material-symbols-outlined edit
+                | Update Profile
+              button.btn-action.btn-dark#showPassBtn
+                span.material-symbols-outlined lock_reset
+                | Change Password
+
+          //- Edit Profile Form (AJAX enabled)
+          form#profileForm.edit-form(style="display: none;")
+            .form-group
+              label First Name
+              input(type="text" name="firstname" value=user.firstname required)
+            .form-group
+              label Email Address
+              input(type="email" name="email" value=user.email required)
+            .form-row(style="margin-top: 10px; display: flex; align-items: center; gap: 15px;")
+              button.btn-action(type="submit") Save Changes
+              button.btn-action.btn-outline#cancelEditBtn(type="button") Cancel
+              span#updateMsg
+
+        //- SECTION 2: PASSWORD FORM
+        #passwordSection(style="display: none;")
+          .info-card
+            h3 Change Password
+            form(action="/change-password" method="POST").password-form
+              .form-group
+                label Current Password
+                .input-wrapper
+                  input(type="password" name="currentPassword" id="currPw" required)
+                  span.material-symbols-outlined.toggle-pass(onclick="togglePassword('currPw', 'eyeCurr')")#eyeCurr visibility_off
+                  
+              .form-group
+                label New Password
+                .input-wrapper
+                  input(type="password" name="newPassword" id="newPw" required)
+                  span.material-symbols-outlined.toggle-pass(onclick="togglePassword('newPw', 'eyeNew')")#eyeNew visibility_off
+              
+              .action-btns
+                button.btn-action(type="submit") Save New Password
+                button.btn-action.btn-outline#cancelPassBtn(type="button") Cancel
+
+      else
+        .info-card(style="text-align: center; padding: 50px;")
+          h3 Session Expired.
+          a.btn-action(href="/login" style="margin-top:20px; justify-content: center;") Login
+
+    footer
+      p © 2026 ZonetoCode. Designed for Developers.
+    script(src="/js/script.js")

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Features — NovaSpark</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="logo">Nova<span>Spark</span> ✦</div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/features">Features</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="#" class="nav-cta">Get Started →</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="features-hero">
+      <div class="notfound-bg"></div>
+      <div class="notfound-grid"></div>
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Everything You Need
+      </div>
+      <h1>Powerful features for<br /><em>modern builders</em></h1>
+      <p>
+        Every tool you need to build, ship, and scale — all in one place. No
+        switching tabs, no duct tape.
+      </p>
+    </section>
+
+    <!-- MAIN FEATURES -->
+    <section class="feat-section">
+      <div class="section-label">Core Features</div>
+      <h2 class="section-title">Built for speed.<br />Designed for scale.</h2>
+
+      <div class="feat-big-grid">
+        <!-- BIG CARD -->
+        <div class="feat-big-card">
+          <div class="feat-big-icon">⚡</div>
+          <h3>Instant Deployment</h3>
+          <p>
+            Push your code and go live in under 10 seconds. Our smart build
+            pipeline detects your framework automatically — zero config needed.
+          </p>
+          <ul class="feat-list">
+            <li>✦ Auto framework detection</li>
+            <li>✦ Preview URLs on every push</li>
+            <li>✦ Instant rollbacks</li>
+            <li>✦ Git integration (GitHub, GitLab, Bitbucket)</li>
+          </ul>
+          <a href="#" class="btn-ghost feat-btn">Learn more →</a>
+        </div>
+
+        <!-- SMALL CARDS RIGHT -->
+        <div class="feat-small-stack">
+          <div class="feat-small-card">
+            <div class="feat-small-top">
+              <div class="feature-icon">🌐</div>
+              <h4>Global Edge Network</h4>
+            </div>
+            <p>
+              Serve users from 200+ locations worldwide with under 50ms latency,
+              guaranteed.
+            </p>
+          </div>
+          <div class="feat-small-card">
+            <div class="feat-small-top">
+              <div class="feature-icon">🔐</div>
+              <h4>Security by Default</h4>
+            </div>
+            <p>
+              SOC2 compliant, end-to-end encrypted, with automatic patches so
+              you never worry.
+            </p>
+          </div>
+          <div class="feat-small-card">
+            <div class="feat-small-top">
+              <div class="feature-icon">🤖</div>
+              <h4>AI-Powered Scaling</h4>
+            </div>
+            <p>
+              Predictive autoscaling handles traffic spikes before they even
+              become problems.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES TABS -->
+    <section class="tabs-section">
+      <div class="section-label">Explore Features</div>
+      <h2 class="section-title">Everything in detail</h2>
+
+      <div class="tabs-container">
+        <!-- TAB BUTTONS -->
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="switchTab('analytics')">
+            📊 Analytics
+          </button>
+          <button class="tab-btn" onclick="switchTab('deploy')">
+            🚀 Deployments
+          </button>
+          <button class="tab-btn" onclick="switchTab('security')">
+            🔐 Security
+          </button>
+          <button class="tab-btn" onclick="switchTab('integrations')">
+            🔗 Integrations
+          </button>
+        </div>
+
+        <!-- TAB PANELS -->
+        <div class="tab-panels">
+          <div class="tab-panel active" id="tab-analytics">
+            <div class="tab-content">
+              <div class="tab-text">
+                <h3>Real-time Analytics</h3>
+                <p>
+                  See exactly how your product performs. Every metric, every
+                  user, every moment — all in one beautiful dashboard.
+                </p>
+                <ul class="feat-list">
+                  <li>✦ Live visitor tracking</li>
+                  <li>✦ Performance monitoring</li>
+                  <li>✦ Error tracking & alerts</li>
+                  <li>✦ Custom dashboards</li>
+                  <li>✦ Export to CSV / JSON</li>
+                </ul>
+              </div>
+              <div class="tab-visual">
+                <div class="mock-chart">
+                  <div class="chart-bar" style="height: 40%"></div>
+                  <div class="chart-bar" style="height: 65%"></div>
+                  <div class="chart-bar" style="height: 45%"></div>
+                  <div class="chart-bar" style="height: 80%"></div>
+                  <div class="chart-bar" style="height: 55%"></div>
+                  <div class="chart-bar" style="height: 90%"></div>
+                  <div class="chart-bar active" style="height: 75%"></div>
+                </div>
+                <p class="mock-label">Live traffic — last 7 days</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="tab-deploy">
+            <div class="tab-content">
+              <div class="tab-text">
+                <h3>Smart Deployments</h3>
+                <p>
+                  Every git push triggers a smart build. Preview links, instant
+                  rollbacks, and zero-downtime deploys out of the box.
+                </p>
+                <ul class="feat-list">
+                  <li>✦ Auto build on push</li>
+                  <li>✦ Preview URLs per branch</li>
+                  <li>✦ One-click rollback</li>
+                  <li>✦ Environment variables UI</li>
+                  <li>✦ Deploy hooks & webhooks</li>
+                </ul>
+              </div>
+              <div class="tab-visual">
+                <div class="mock-terminal">
+                  <div class="terminal-bar">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                  </div>
+                  <div class="terminal-body">
+                    <p><span class="t-green">✔</span> Build complete — 8.2s</p>
+                    <p><span class="t-green">✔</span> Assets optimized</p>
+                    <p><span class="t-green">✔</span> Deployed to edge</p>
+                    <p><span class="t-accent">→</span> Live at novaspark.io</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="tab-security">
+            <div class="tab-content">
+              <div class="tab-text">
+                <h3>Enterprise Security</h3>
+                <p>
+                  Bank-grade security built in from day one. Protect your users
+                  and your data without lifting a finger.
+                </p>
+                <ul class="feat-list">
+                  <li>✦ SSL / TLS auto renewal</li>
+                  <li>✦ DDoS protection</li>
+                  <li>✦ SOC2 Type II compliant</li>
+                  <li>✦ Role-based access control</li>
+                  <li>✦ Audit logs</li>
+                </ul>
+              </div>
+              <div class="tab-visual">
+                <div class="mock-security">
+                  <div class="security-ring">
+                    <div class="security-icon">🔐</div>
+                  </div>
+                  <p class="security-status">All systems secure</p>
+                  <div class="security-badges">
+                    <span>SOC2</span>
+                    <span>SSL</span>
+                    <span>GDPR</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="tab-integrations">
+            <div class="tab-content">
+              <div class="tab-text">
+                <h3>140+ Integrations</h3>
+                <p>
+                  Connect your favorite tools with one click. NovaSpark plays
+                  nicely with your entire stack.
+                </p>
+                <ul class="feat-list">
+                  <li>✦ GitHub / GitLab / Bitbucket</li>
+                  <li>✦ Slack & Discord alerts</li>
+                  <li>✦ Stripe billing</li>
+                  <li>✦ MongoDB & PostgreSQL</li>
+                  <li>✦ AWS, GCP, Azure</li>
+                </ul>
+              </div>
+              <div class="tab-visual">
+                <div class="integrations-grid-mock">
+                  <div class="int-icon">⚙️</div>
+                  <div class="int-icon">📦</div>
+                  <div class="int-icon">💳</div>
+                  <div class="int-icon">🗄️</div>
+                  <div class="int-icon">💬</div>
+                  <div class="int-icon">☁️</div>
+                  <div class="int-icon">🔔</div>
+                  <div class="int-icon">📊</div>
+                  <div class="int-icon">+130</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARISON TABLE -->
+    <section class="compare-section">
+      <div class="section-label">Comparison</div>
+      <h2 class="section-title">NovaSpark vs the rest</h2>
+
+      <div class="compare-table">
+        <div class="compare-header">
+          <div class="compare-cell head">Feature</div>
+          <div class="compare-cell head highlight">NovaSpark ✦</div>
+          <div class="compare-cell head">Others</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">Deploy time</div>
+          <div class="compare-cell highlight">Under 10 seconds</div>
+          <div class="compare-cell muted">2–5 minutes</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">Global CDN</div>
+          <div class="compare-cell highlight">✅ 200+ locations</div>
+          <div class="compare-cell muted">❌ Limited regions</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">Free SSL</div>
+          <div class="compare-cell highlight">✅ Always free</div>
+          <div class="compare-cell muted">💰 Paid plans only</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">AI Autoscaling</div>
+          <div class="compare-cell highlight">✅ Built in</div>
+          <div class="compare-cell muted">❌ Manual only</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">Support</div>
+          <div class="compare-cell highlight">✅ 24/7 live chat</div>
+          <div class="compare-cell muted">📧 Email only</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">Pricing</div>
+          <div class="compare-cell highlight">✅ Free forever tier</div>
+          <div class="compare-cell muted">💰 Paid from day 1</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <div class="cta-box">
+        <h2>Ready to experience<br />all these features?</h2>
+        <p>Start for free — no credit card required. Upgrade anytime.</p>
+        <div class="cta-actions">
+          <a href="#" class="btn-primary">Start building free →</a>
+          <a href="/contact" class="btn-ghost">Talk to us</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo"><%= time %><span><%= cat %></span></div>
+      <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/features">Features</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <div class="footer-copy"><%= massage %></div>
+    </footer>
+    <script src="index.js"></script>
+  </body>
+</html>

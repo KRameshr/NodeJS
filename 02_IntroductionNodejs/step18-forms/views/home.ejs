@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form — NovaSpark</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body>
+    <p class="welcome">Welcome to <span>Home</span> ✦</p>
+    <p class="welcome-sub">Fill in the form below to get started</p>
+
+    <form action="/search" method="post">
+      <!-- Name + Email -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+      </div>
+
+      <!-- Password + Age -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter password"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input
+            type="number"
+            id="age"
+            name="age"
+            min="1"
+            max="100"
+            placeholder="Your age"
+          />
+        </div>
+      </div>
+
+      <!-- City -->
+      <div class="form-group">
+        <label for="city">City</label>
+        <select id="city" name="city">
+          <option value="">Select city</option>
+          <option value="hyderabad">Hyderabad</option>
+          <option value="bangalore">Bangalore</option>
+          <option value="mumbai">Mumbai</option>
+          <option value="chennai">Chennai</option>
+        </select>
+      </div>
+
+      <!-- ✅ Fix 1 — removed loose "Gender" text -->
+      <div class="form-group">
+        <label>Gender</label>
+        <div class="radio-group">
+          <input type="radio" id="male" name="gender" value="male" />
+          <label for="male">Male</label>
+          <input type="radio" id="female" name="gender" value="female" />
+          <label for="female">Female</label>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="form-group">
+        <label>Skills</label>
+        <div class="checkbox-group">
+          <input type="checkbox" id="html" name="skills" value="html" />
+          <label for="html">HTML</label>
+          <input type="checkbox" id="css" name="skills" value="css" />
+          <label for="css">CSS</label>
+          <input type="checkbox" id="js" name="skills" value="js" />
+          <label for="js">JavaScript</label>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Message -->
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          placeholder="Write your message..."
+        ></textarea>
+      </div>
+
+      <!-- ✅ Fix 2 — removed random "-" -->
+
+      <!-- File -->
+      <div class="form-group">
+        <label for="photo">Profile Photo</label>
+        <input type="file" id="photo" name="photo" accept="image/*" />
+      </div>
+
+      <!-- Buttons -->
+      <div class="btn-row">
+        <button type="submit">Submit Form →</button>
+        <button type="reset">Clear</button>
+      </div>
+    </form>
+  </body>
+</html>

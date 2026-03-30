@@ -1,0 +1,20 @@
+
+username : admin
+password : Ramesh#2002
+
+record :hero
+collection :heros
+dbname:onlineDB
+mongodb+srv://admin:Ramesh#2002@cluster0.4crpl16.mongodb.net/onlineDB?appName=Cluster0
+
+
+{
+  "_id": {
+    "$oid": "69bfd5451bfbcf0ab68dd759"
+  },
+  "title": "Ironman",            string
+  "firstname": "Tony",           string
+  "lastname": "Stark",           string
+  "email": "tony@stark.com",     string
+  "city": "New York"             string
+}

@@ -1,0 +1,214 @@
+//- doctype html
+//- html(lang="en")
+//-   head
+//-     meta(charset="UTF-8")
+//-     meta(name="viewport" content="width=device-width, initial-scale=1.0")
+//-     title= title
+//-     link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0")
+//-     style.
+//-       * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+//-       body { background-color: #f8f9fa; min-height: 100vh; display: flex; flex-direction: column; }
+      
+//-       /* --- ENHANCED NAVBAR --- */
+//-       .navbar { 
+//-         background: #008080; 
+//-         padding: 0.8rem 2rem; 
+//-         display: flex; 
+//-         justify-content: space-between; 
+//-         align-items: center; 
+//-         box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+//-         position: sticky; 
+//-         top: 0; 
+//-         z-index: 1000; 
+//-         transition: all 0.3s ease;
+//-       }
+      
+//-       /* Glass effect on scroll */
+//-       .navbar.scrolled {
+//-         background: rgba(0, 128, 128, 0.9);
+//-         backdrop-filter: blur(8px);
+//-         padding: 0.6rem 2rem;
+//-       }
+
+//-       .navbar strong { color: white; font-size: 1.4rem; letter-spacing: 1px; cursor: pointer; }
+      
+//-       .nav-links { display: flex; align-items: center; }
+//-       .nav-links a { 
+//-         color: white; 
+//-         text-decoration: none; 
+//-         margin-left: 25px; 
+//-         font-size: 14px; 
+//-         font-weight: 500; 
+//-         transition: 0.3s; 
+//-         opacity: 0.8;
+//-         position: relative;
+//-       }
+      
+//-       /* Hover Underline Animation */
+//-       .nav-links a::after {
+//-         content: '';
+//-         position: absolute;
+//-         width: 0;
+//-         height: 2px;
+//-         bottom: -5px;
+//-         left: 0;
+//-         background-color: #b2dfdb;
+//-         transition: width 0.3s;
+//-       }
+//-       .nav-links a:hover { opacity: 1; }
+//-       .nav-links a:hover::after { width: 100%; }
+
+//-       .menu-icon { color: white; cursor: pointer; display: none; user-select: none; font-size: 28px; }
+
+//-       /* --- MOBILE NAVIGATION --- */
+//-       @media (max-width: 768px) {
+//-         .menu-icon { display: block; z-index: 1001; }
+//-         .nav-links { 
+//-           display: flex;
+//-           flex-direction: column; 
+//-           justify-content: center;
+//-           position: fixed; 
+//-           top: 0; 
+//-           right: -100%; /* Hidden off-screen */
+//-           width: 70%; 
+//-           height: 100vh;
+//-           background: #004d4d; 
+//-           transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+//-           box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+//-         }
+//-         .nav-links.active { right: 0; } /* Slide in */
+        
+//-         .nav-links a { 
+//-           margin: 20px 0; 
+//-           font-size: 1.2rem; 
+//-           opacity: 1;
+//-         }
+//-       }
+
+//-       /* --- REST OF STYLES (Kept as requested) --- */
+//-       .hero { background: linear-gradient(135deg, #008080 0%, #004d4d 100%); color: white; text-align: center; padding: 100px 20px; clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); }
+//-       .hero h1 { font-size: 3rem; margin-bottom: 15px; letter-spacing: -1px; }
+//-       .hero p { font-size: 1.2rem; margin-bottom: 35px; color: #b2dfdb; max-width: 600px; margin-inline: auto; }
+//-       .btn-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+//-       .btn { padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 15px; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+//-       .btn-white { background: white; color: #008080; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+//-       .btn-white:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+//-       .btn-outline { border: 2px solid rgba(255,255,255,0.8); color: white; }
+//-       .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: white; }
+//-       .section-title { text-align: center; margin-top: 60px; color: #333; font-size: 2rem; }
+//-       .cards { display: flex; gap: 30px; padding: 50px 20px; justify-content: center; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; }
+//-       .card { background: white; border-radius: 15px; padding: 40px 30px; width: 300px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #eee; }
+//-       .card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); border-color: #008080; }
+//-       .card-icon { background: #e0f2f1; color: #008080; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto 20px; }
+//-       .card h3 { color: #222; margin-bottom: 12px; font-size: 1.3rem; }
+//-       .card p { color: #666; font-size: 0.95rem; line-height: 1.6; }
+//-       footer { background: #004d4d; color: white; padding: 40px 20px; text-align: center; margin-top: auto; }
+//-       footer p { opacity: 0.7; font-size: 14px; }
+
+//-   body
+//-     nav.navbar#navbar
+//-       strong(onclick="window.location.href='/'") ZonetoCode
+//-       span.material-symbols-outlined.menu-icon#menuBtn(onclick="toggleMenu()") menu
+//-       .nav-links#navLinks
+//-         a(href="/") Home
+//-         a(href="/login") Login
+//-         a(href="/register") Register
+
+//-     header.hero
+//-       h1 Elevate Your Code
+//-       p The complete MERN stack boilerplate for secure and scalable modern web applications.
+//-       .btn-group
+//-         a.btn.btn-white(href="/register") 
+//-           span.material-symbols-outlined rocket_launch
+//-           | Get Started
+//-         a.btn.btn-outline(href="/login") 
+//-           | Login to Account
+
+//-     h2.section-title Why choose us?
+    
+//-     main.cards
+//-       section.card
+//-         .card-icon: span.material-symbols-outlined lock
+//-         h3 Secure Auth
+//-         p Industry-standard JWT and encrypted password storage.
+
+//-       section.card
+//-         .card-icon: span.material-symbols-outlined settings_suggest
+//-         h3 Modular Design
+//-         p Built with reusable components and clean architecture.
+
+//-       section.card
+//-         .card-icon: span.material-symbols-outlined speed
+//-         h3 Performance
+//-         p Optimized for speed with server-side rendering.
+
+//-     footer
+//-       p © 2026 ZonetoCode. Designed for Developers.
+
+//-     script.
+//-       // 1. Toggle Menu Icon and Sidebar
+//-       function toggleMenu() {
+//-         const nav = document.getElementById('navLinks');
+//-         const icon = document.getElementById('menuBtn');
+        
+//-         nav.classList.toggle('active');
+        
+//-         if (nav.classList.contains('active')) {
+//-           icon.textContent = 'close';
+//-         } else {
+//-           icon.textContent = 'menu';
+//-         }
+//-       }
+
+//-       // 2. Handle Scroll Effect for Navbar
+//-       window.onscroll = function() {
+//-         const navbar = document.getElementById('navbar');
+//-         if (window.pageYOffset > 50) {
+//-           navbar.classList.add('scrolled');
+//-         } else {
+//-           navbar.classList.remove('scrolled');
+//-         }
+//-       };
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title= title
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined")
+    link(rel="stylesheet", href="/css/index.css")
+  body
+    nav.navbar#navbar
+      strong(onclick="window.location.href='/'") ZonetoCode
+      span.material-symbols-outlined.menu-icon#menuBtn(onclick="toggleMenu()") menu
+      .nav-links#navLinks
+        a(href="/") Home
+        a(href="/login") Login
+        a(href="/register") Register
+
+    header.hero
+      h1 Elevate Your Code
+      p The complete MERN stack boilerplate for secure and scalable modern web applications.
+      .btn-group
+        a.btn.btn-white(href="/register")
+          span.material-symbols-outlined rocket_launch
+          | Get Started
+        a.btn.btn-outlineh(href="/login") Login to Account
+
+    main.cards
+      section.card
+        .card-icon: span.material-symbols-outlined lock
+        h3 Secure Auth
+        p Industry-standard JWT and encrypted password storage.
+      section.card
+        .card-icon: span.material-symbols-outlined settings_suggest
+        h3 Modular Design
+        p Built with reusable components and clean architecture.
+      section.card
+        .card-icon: span.material-symbols-outlined speed
+        h3 Performance
+        p Optimized for speed with server-side rendering.
+
+    footer: p © 2026 ZonetoCode. Designed for Developers.
+    script(src="/js/script.js")

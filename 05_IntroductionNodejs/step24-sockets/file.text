@@ -1,0 +1,74 @@
+🔑 Key Points: HTTP vs WebSockets (Socket.io)
+🌐 HTTP
+    Follows a request–response model (client always starts communication)
+    Stateless – each request is independent
+    Connection is closed after every request
+    Higher latency due to repeated handshakes
+    Needs polling / long polling for near real-time updates
+    Best for REST APIs, fetching data, form submissions
+⚡ WebSockets (Socket.io)
+    Provides full-duplex communication (both client & server can send anytime)
+    Uses a persistent connection (stays open)
+    Starts with an HTTP handshake, then upgrades to WebSocket
+    Low latency (no repeated requests)
+    Supports real-time data transfer
+    Socket.io adds:
+            Automatic reconnection
+            Event-based communication
+            Fallback to HTTP polling
+
+🚀 When to Use What
+✅ Use HTTP when:
+    Building CRUD APIs
+    Data doesn’t change frequently
+    Simpler architecture is enough
+✅ Use WebSockets when:
+    Chat applications
+    Live notifications
+    Real-time dashboards
+    Online gaming / collaboration tools
+    
+🎤 1-Line Power Statement (Very Useful)
+
+“HTTP is client-driven and stateless, while WebSockets enable persistent, real-time, bidirectional communication.”
+
+
+Feature,                       Standard HTTP (REST),                  WebSockets (Socket.io)
+Communication,                 Uni-directional (Client-initiated),    Bi-directional (Full-Duplex)
+Connection,                    Temporary: Closes after every response,Persistent: Stays open via a TCP handshake
+Model,                         Request-Response (Stop & Wait),        Event-Driven (Real-time stream)
+Overhead,                      High: Large headers sent with every click,  Low: Minimal binary packets after connection
+Latency,                      Higher: Due to repeated TCP handshakes,       Instant: Sub-100ms updates via open pipe
+Analogy,                      Sending a Letter and waiting for a reply,    A Live Phone Call where both sides talk
+
+
+nvm is node version installed in our computer
+
+
+
+📦 Dependencies
+Needed to run the app
+Installed with: npm install
+Used in production
+Example: express, react
+
+🛠 DevDependencies
+Needed only for development
+Installed with: npm install --save-dev
+Not used in production
+Example: nodemon, eslint
+npm install package-name --save-dev
+
+🌍 Global Packages (npm)
+Installed system-wide, not inside a project
+Used from anywhere in terminal
+
+Installed with:
+
+npm install -g package-name
+✅ Examples
+nodemon
+npm
+create-react-app
+
+

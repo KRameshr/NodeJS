@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Result — NovaSpark</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/index.css" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #060608; --surface: #0e0e12; --card: #111116;
+      --border: rgba(255,255,255,0.07); --accent: #c8f03d;
+      --accent2: #7b6ef6; --text: #f0f0f0; --muted: #6b6b7b;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      padding: 3rem 1.5rem;
+      background-image: radial-gradient(
+        ellipse 60% 40% at 50% 0%,
+        rgba(123,110,246,0.1) 0%, transparent 70%
+      );
+    }
+    .page-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-align: center;
+      margin-bottom: 0.4rem;
+    }
+    .page-title span { color: var(--accent); }
+    .page-sub {
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.88rem;
+      margin-bottom: 3rem;
+    }
+
+    /* ── LATEST SUBMISSION ── */
+    .latest-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      max-width: 560px;
+      margin: 0 auto 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .latest-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .card-title span { color: var(--accent); }
+
+    /* INFO ROWS */
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+    .info-row:last-of-type { border-bottom: none; }
+    .info-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .info-value {
+      font-weight: 500;
+      color: var(--text);
+      text-align: right;
+    }
+
+    /* SKILLS BADGES */
+    .skills-wrap {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .skill-badge {
+      font-size: 0.7rem;
+      background: rgba(200,240,61,0.08);
+      border: 1px solid rgba(200,240,61,0.2);
+      color: var(--accent);
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+    }
+
+    /* ── ALL SUBMISSIONS TABLE ── */
+    .all-section {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .all-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+    }
+    .table-wrap {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .table-head {
+      display: grid;
+      grid-template-columns: 0.5fr 1fr 1.5fr 0.5fr 1fr 0.8fr 1.2fr;
+      background: var(--surface);
+      padding: 0.9rem 1.2rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid var(--border);
+    }
+    .table-row {
+      display: grid;
+      grid-template-columns: 0.5fr 1fr 1.5fr 0.5fr 1fr 0.8fr 1.2fr;
+      padding: 0.9rem 1.2rem;
+      font-size: 0.85rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+      align-items: center;
+    }
+    .table-row:last-child { border-bottom: none; }
+    .table-row:hover { background: var(--surface); }
+    .table-row .skill-badge { font-size: 0.65rem; }
+
+    /* BACK BUTTON */
+    .back-btn {
+      display: block;
+      text-align: center;
+      background: var(--accent);
+      color: #000;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      padding: 0.85rem;
+      border-radius: 12px;
+      text-decoration: none;
+      max-width: 560px;
+      margin: 2rem auto 0;
+      transition: all 0.2s;
+    }
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(200,240,61,0.3);
+    }
+
+    @media(max-width: 768px) {
+      .table-head,
+      .table-row { grid-template-columns: 1fr 1fr; }
+      .table-head span:nth-child(n+3),
+      .table-row span:nth-child(n+3) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE TITLE -->
+  <h1 class="page-title">Hello <span><%= person.name %></span> 👋</h1>
+  <p class="page-sub">Form submitted successfully ✅</p>
+
+  <!-- ── LATEST SUBMISSION ── -->
+  <div class="latest-card">
+    <h2 class="card-title">✦ Your <span>Information</span></h2>
+
+    <div class="info-row">
+      <span class="info-label">Full Name</span>
+      <span class="info-value"><%= person.name %></span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Email</span>
+      <span class="info-value"><%= person.email %></span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Age</span>
+      <span class="info-value"><%= person.age %> years</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">City</span>
+      <span class="info-value">📍 <%= person.city %></span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Gender</span>
+      <span class="info-value"><%= person.gender || "Not selected" %></span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Skills</span>
+      <div class="skills-wrap">
+        <% if(Array.isArray(person.skills)) { %>
+          <% person.skills.forEach(skill => { %>
+            <span class="skill-badge"><%= skill %></span>
+          <% }) %>
+        <% } else if(person.skills) { %>
+          <span class="skill-badge"><%= person.skills %></span>
+        <% } else { %>
+          <span class="info-value">None</span>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Message</span>
+      <span class="info-value"><%= person.message || "No message" %></span>
+    </div>
+
+  </div>
+
+  <!-- ── ALL SUBMISSIONS ── -->
+  <% if(all.length > 0) { %>
+  <div class="all-section">
+    <p class="all-title">All Submissions (<%= all.length %>)</p>
+
+    <div class="table-wrap">
+      <!-- Header -->
+      <div class="table-head">
+        <span>#</span>
+        <span>Name</span>
+        <span>Email</span>
+        <span>Age</span>
+        <span>City</span>
+        <span>Gender</span>
+        <span>Skills</span>
+      </div>
+
+      <!-- Rows -->
+      <% all.forEach((item, index) => { %>
+        <div class="table-row">
+          <span><%= index + 1 %></span>
+          <span><%= item.name %></span>
+          <span><%= item.email %></span>
+          <span><%= item.age %></span>
+          <span><%= item.city %></span>
+          <span><%= item.gender || "—" %></span>
+          <span>
+            <% if(Array.isArray(item.skills)) { %>
+              <% item.skills.forEach(s => { %>
+                <span class="skill-badge"><%= s %></span>
+              <% }) %>
+            <% } else if(item.skills) { %>
+              <span class="skill-badge"><%= item.skills %></span>
+            <% } else { %>
+              —
+            <% } %>
+          </span>
+        </div>
+      <% }) %>
+
+    </div>
+  </div>
+  <% } %>
+
+  <!-- BACK BUTTON -->
+  <a href="/" class="back-btn">← Submit Another</a>
+
+</body>
+</html>

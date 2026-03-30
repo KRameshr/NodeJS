@@ -1,0 +1,21 @@
+{
+  "name": "step18-forms",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "pug": "^3.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

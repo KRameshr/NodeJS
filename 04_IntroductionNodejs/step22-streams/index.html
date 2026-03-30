@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Understanding Node.js Streams</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg-color: #f3f4f6;
+        --card-bg: #ffffff;
+        --text-main: #111827;
+        --text-muted: #374151;
+        --accent: #2563eb;
+        --code-bg: #1e293b;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.7;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        padding: 60px 20px;
+      }
+
+      .container {
+        max-width: 800px;
+        width: 100%;
+      }
+
+      header {
+        margin-bottom: 3rem;
+        text-align: center;
+      }
+
+      h1 {
+        font-weight: 800;
+        font-size: 3rem;
+        letter-spacing: -0.05em;
+        margin-bottom: 0.5rem;
+      }
+
+      .article-card {
+        background: var(--card-bg);
+        padding: 3rem;
+        border-radius: 24px;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        border: 1px solid #e5e7eb;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        color: var(--accent);
+        margin-top: 2rem;
+        display: flex;
+        align-items: center;
+      }
+
+      h2::before {
+        content: "";
+        width: 12px;
+        height: 12px;
+        background: var(--accent);
+        display: inline-block;
+        margin-right: 12px;
+        border-radius: 3px;
+      }
+
+      p,
+      li {
+        font-size: 1.125rem;
+        color: var(--text-muted);
+        margin-bottom: 1.2rem;
+      }
+
+      ul {
+        padding-left: 1.5rem;
+      }
+
+      .highlight-box {
+        background: #eff6ff;
+        border-left: 4px solid var(--accent);
+        padding: 1.5rem;
+        border-radius: 8px;
+        font-style: italic;
+        margin: 2rem 0;
+      }
+
+      code {
+        font-family: "Fira Code", monospace;
+        background: var(--code-bg);
+        color: #f8fafc;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.95rem;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 4rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        opacity: 0.4;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Node.js Streams</h1>
+        <p style="font-size: 1.25rem">The Secret to High-Performance Apps</p>
+      </header>
+
+      <div class="article-card">
+        <h2>1. The Definition</h2>
+        <p>
+          Streams are a way to handle data piece-by-piece. Instead of reading a
+          whole file into <code>RAM</code>, we process it in small
+          <strong>chunks</strong>.
+        </p>
+
+        <div class="highlight-box">
+          "Think of a stream like a water faucet—you take sips as it flows
+          rather than waiting for a 10-gallon bucket to fill up."
+        </div>
+
+        <h2>2. The Benefits</h2>
+        <ul>
+          <li>
+            <strong>Memory Efficient:</strong> Process 10GB files on 1GB RAM
+            machines.
+          </li>
+          <li>
+            <strong>Time Efficient:</strong> Data starts moving immediately
+            without waiting for the full read.
+          </li>
+        </ul>
+
+        <h2>3. Real-World Analogy</h2>
+        <p>
+          Think of <strong>YouTube vs. a Download</strong>. Traditional
+          downloading requires the whole file first; Streaming lets you watch
+          the first 10 seconds while the rest loads in the background.
+        </p>
+      </div>
+
+      <div class="footer">End of Article</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+step 1
+     allow the user register
+step 2
+    allow the user to login
+step 3 
+    validate the user credentials to give him access to pages that restricted   
+step 4
+    encreption of user password
+step 5
+   cookies and sessions to rememeber the user who is already loged in 
+step 5
+    csrf
+
+
+
+expeess mongooess pug bcrypjs cer
+
+
+    jwt will not use in banking because it not secure
+     
+    passport.js   
+    
+authorisation
+streams
+testing
+sockets

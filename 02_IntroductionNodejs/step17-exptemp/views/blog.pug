@@ -1,0 +1,70 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Blog — NovaSpark
+    link(href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet")
+    link(rel="stylesheet" href="/index.css")
+  body
+
+    //- ── NAV ──────────────────────────────────
+    nav
+      .logo Nova
+        span Spark
+        |  ✦
+      ul.nav-links
+        li: a(href="/") Home
+        li: a(href="/about") About
+        li: a(href="/features") Features
+        li: a(href="/blog") Blog
+        li: a(href="/contact" class="nav-cta") Contact →
+
+    //- ── HERO ─────────────────────────────────
+    section.blog-hero
+      .badge
+        span.badge-dot
+        | Latest Articles
+      h1 Our #[span Blog]
+      p
+        | #{total} articles
+        if category !== "all"
+          |  in #[strong #{category}]
+
+    //- ── FILTER BAR ───────────────────────────
+    .blog-filter
+      span.filter-label Filter:
+      a(href="/blog"                    class=`filter-btn ${category === 'all'      ? 'active' : ''}`) All
+      a(href="/blog?category=Backend"   class=`filter-btn ${category === 'Backend'  ? 'active' : ''}`) Backend
+      a(href="/blog?category=Frontend"  class=`filter-btn ${category === 'Frontend' ? 'active' : ''}`) Frontend
+      a(href="/blog?category=Database"  class=`filter-btn ${category === 'Database' ? 'active' : ''}`) Database
+
+    //- ── BLOG GRID ────────────────────────────
+    .blog-grid
+      if posts.length === 0
+        .no-posts
+          h3 No posts found 😕
+          p Try a different category
+          a.btn-primary(href="/blog") Clear Filter
+
+      else
+        each post in posts
+          a.blog-card(href=`/blog/${post.slug}`)
+            p.blog-category ✦ #{post.category}
+            h3.blog-title #{post.title}
+            p.blog-excerpt #{post.content.substring(0, 80)}...
+            .blog-meta
+              span 👤 #{post.author}
+              span 📅 #{post.date}
+              span ⏱ #{post.read}
+            span.read-more Read more →
+
+    //- ── FOOTER ───────────────────────────────
+    footer
+      .footer-logo Nova
+        span Spark
+      ul.footer-links
+        li: a(href="/") Home
+        li: a(href="/blog") Blog
+        li: a(href="/contact") Contact
+      .footer-copy © 2026 NovaSpark.

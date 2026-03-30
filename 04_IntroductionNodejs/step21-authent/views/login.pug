@@ -1,0 +1,201 @@
+//- doctype html
+//- html(lang="en")
+//-   head
+//-     meta(charset="UTF-8")
+//-     meta(name="viewport" content="width=device-width, initial-scale=1.0")
+//-     title= title
+//-     link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0")
+//-     style.
+//-       * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+//-       body { background-color: #f0f2f5; min-height: 100vh; display: flex; flex-direction: column; }
+      
+//-       /* --- SHARED NAVIGATION (Same as Index) --- */
+//-       .navbar { 
+//-         background: #008080; 
+//-         padding: 0.8rem 2rem; 
+//-         display: flex; 
+//-         justify-content: space-between; 
+//-         align-items: center; 
+//-         box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+//-         position: sticky; 
+//-         top: 0; 
+//-         z-index: 1000; 
+//-         transition: all 0.3s ease;
+//-       }
+//-       .navbar.scrolled {
+//-         background: rgba(0, 128, 128, 0.9);
+//-         backdrop-filter: blur(8px);
+//-         padding: 0.6rem 2rem;
+//-       }
+//-       .navbar strong { color: white; font-size: 1.4rem; letter-spacing: 1px; cursor: pointer; }
+      
+//-       .nav-links { display: flex; align-items: center; }
+//-       .nav-links a { 
+//-         color: white; text-decoration: none; margin-left: 25px; 
+//-         font-size: 14px; font-weight: 500; transition: 0.3s; opacity: 0.8;
+//-         position: relative;
+//-       }
+//-       .nav-links a:hover { opacity: 1; }
+//-       .nav-links a::after {
+//-         content: ''; position: absolute; width: 0; height: 2px;
+//-         bottom: -5px; left: 0; background-color: #b2dfdb; transition: width 0.3s;
+//-       }
+//-       .nav-links a:hover::after { width: 100%; }
+
+//-       .menu-icon { color: white; cursor: pointer; display: none; user-select: none; font-size: 28px; }
+
+//-       @media (max-width: 768px) {
+//-         .menu-icon { display: block; z-index: 1001; }
+//-         .nav-links { 
+//-           display: flex; flex-direction: column; justify-content: center;
+//-           position: fixed; top: 0; right: -100%; width: 70%; height: 100vh;
+//-           background: #004d4d; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+//-           box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+//-         }
+//-         .nav-links.active { right: 0; }
+//-         .nav-links a { margin: 20px 0; font-size: 1.2rem; opacity: 1; }
+//-       }
+
+//-       /* --- LOGIN FORM STYLES --- */
+//-       .form-wrapper { flex: 1; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
+//-       .form-container { background: white; width: 100%; max-width: 400px; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); overflow: hidden; }
+      
+//-       .form-header { background: #008080; color: white; padding: 30px; text-align: center; }
+//-       .form-header h2 { font-size: 1.4rem; letter-spacing: 2px; font-weight: 700; }
+      
+//-       .form-body { padding: 35px; }
+//-       .form-group { margin-bottom: 22px; }
+//-       .form-group label { display: block; font-size: 13px; font-weight: 700; color: #555; margin-bottom: 10px; text-transform: uppercase; }
+//-       .form-group input { width: 100%; padding: 14px; border: 1.5px solid #eee; border-radius: 8px; outline: none; transition: 0.3s; font-size: 15px; }
+//-       .form-group input:focus { border-color: #008080; background: #f9ffff; }
+
+//-       .password-wrapper { position: relative; }
+//-       .eye-btn { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #999; display: flex; align-items: center; }
+
+//-       .btn-submit { 
+//-         width: 100%; padding: 14px; background: #008080; color: white; 
+//-         border: none; border-radius: 8px; cursor: pointer; font-weight: 700; 
+//-         font-size: 16px; transition: 0.3s; margin-top: 10px;
+//-       }
+//-       .btn-submit:hover { background: #006666; box-shadow: 0 8px 15px rgba(0,128,128,0.2); transform: translateY(-1px); }
+      
+//-       .alert { padding: 12px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; color: white; text-align: center; font-weight: 500; }
+//-       .error { background: #eb4d4b; }
+
+//-       .form-footer { text-align: center; margin-top: 30px; font-size: 14px; color: #777; }
+//-       .form-footer a { color: #008080; text-decoration: none; font-weight: 700; margin-left: 5px; }
+//-       .form-footer a:hover { text-decoration: underline; }
+
+//-   body
+//-     nav.navbar#navbar
+//-       strong(onclick="window.location.href='/'") ZonetoCode
+//-       span.material-symbols-outlined.menu-icon#menuBtn(onclick="toggleMenu()") menu
+//-       .nav-links#navLinks
+//-         a(href="/") Home
+//-         a(href="/login") Login
+//-         a(href="/register") Register
+
+//-     .form-wrapper
+//-       .form-container
+//-         .form-header
+//-           h2 WELCOME BACK
+//-         .form-body
+//-           if error
+//-             .alert.error= error
+
+//-           form(action="/login" method="POST")
+//-             .form-group
+//-               label Email Address
+//-               input(type="email" name="email" placeholder="name@company.com" required)
+            
+//-             .form-group
+//-               label Password
+//-               .password-wrapper
+//-                 input(type="password" name="password" id="loginPw" placeholder="••••••••" required)
+//-                 span.eye-btn(onclick="togglePassword()")
+//-                   span.material-symbols-outlined#eyeIcon visibility_off
+
+//-             button.btn-submit(type="submit") Sign In
+
+//-           .form-footer
+//-             p Don't have an account?
+//-               a(href="/register") Register Now
+
+//-     script.
+//-       // 1. Navbar Scroll Effect
+//-       window.onscroll = function() {
+//-         const navbar = document.getElementById('navbar');
+//-         if (window.pageYOffset > 50) {
+//-           navbar.classList.add('scrolled');
+//-         } else {
+//-           navbar.classList.remove('scrolled');
+//-         }
+//-       };
+
+//-       // 2. Mobile Menu Toggle
+//-       function toggleMenu() {
+//-         const nav = document.getElementById('navLinks');
+//-         const icon = document.getElementById('menuBtn');
+//-         nav.classList.toggle('active');
+//-         icon.textContent = nav.classList.contains('active') ? 'close' : 'menu';
+//-       }
+
+//-       // 3. Password Visibility Toggle
+//-       function togglePassword() {
+//-         const input = document.getElementById("loginPw");
+//-         const icon = document.getElementById("eyeIcon");
+//-         if (input.type === "password") {
+//-           input.type = "text";
+//-           icon.textContent = "visibility";
+//-         } else {
+//-           input.type = "password";
+//-           icon.textContent = "visibility_off";
+//-         }
+//-       }
+
+
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Login | ZonetoCode
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined")
+    link(rel="stylesheet", href="/css/index.css")
+  body
+    nav.navbar#navbar
+      strong(onclick="window.location.href='/'") ZonetoCode
+      span.material-symbols-outlined.menu-icon#menuBtn(onclick="toggleMenu()") menu
+      .nav-links#navLinks
+        a(href="/") Home
+        a(href="/login") Login
+        a(href="/register") Register
+
+    .form-wrapper
+      .form-container
+        .form-header: h2 WELCOME BACK
+        .form-body
+          if error
+            .alert.error= error
+
+          form(action="/login" method="POST")
+            .form-group
+              label Email Address
+              input(type="email" name="email" placeholder="name@company.com" required)
+            
+            .form-group
+              label Password
+              .password-wrapper
+                input(type="password" name="password" id="pw" placeholder="••••••••" required)
+                span.eye-btn(onclick="togglePassword('pw', 'eyeIcon')")
+                  span.material-symbols-outlined#eyeIcon visibility_off
+
+            button.btn-submit(type="submit") Sign In
+
+          .form-footer
+            p Don't have an account? 
+              a(href="/register")  Register Now
+
+    footer: p © 2026 ZonetoCode. Designed for Developers.
+    script(src="/js/script.js")

@@ -1,0 +1,110 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Form — NovaSpark (Pug)
+    link(href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet")
+    link(rel="stylesheet" href="/index.css")
+
+  body
+
+    p.welcome Welcome to #[span Home] ✦
+    p.welcome-sub Fill in the form below to get started
+
+    form(action="/pug-search" method="post")
+
+      //- Name + Email
+      .form-row
+        .form-group
+          label(for="name") Full Name
+          input(
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your name"
+            required
+          )
+        .form-group
+          label(for="email") Email Address
+          input(
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          )
+
+      //- Password + Age
+      .form-row
+        .form-group
+          label(for="password") Password
+          input(
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter password"
+            required
+          )
+        .form-group
+          label(for="age") Age
+          input(
+            type="number"
+            id="age"
+            name="age"
+            min="1"
+            max="100"
+            placeholder="Your age"
+          )
+
+      //- City
+      .form-group
+        label(for="city") City
+        select(id="city" name="city")
+          option(value="") Select city
+          option(value="hyderabad") Hyderabad
+          option(value="bangalore") Bangalore
+          option(value="mumbai") Mumbai
+          option(value="chennai") Chennai
+
+      //- Gender
+      .form-group
+        label Gender
+        .radio-group
+          input(type="radio" id="male"   name="gender" value="male")
+          label(for="male") Male
+          input(type="radio" id="female" name="gender" value="female")
+          label(for="female") Female
+
+      //- Skills
+      .form-group
+        label Skills
+        .checkbox-group
+          input(type="checkbox" id="html" name="skills" value="html")
+          label(for="html") HTML
+          input(type="checkbox" id="css"  name="skills" value="css")
+          label(for="css") CSS
+          input(type="checkbox" id="js"   name="skills" value="js")
+          label(for="js") JavaScript
+
+      .divider
+
+      //- Message
+      .form-group
+        label(for="message") Message
+        textarea(
+          id="message"
+          name="message"
+          rows="4"
+          placeholder="Write your message..."
+        )
+
+      //- File
+      .form-group
+        label(for="photo") Profile Photo
+        input(type="file" id="photo" name="photo" accept="image/*")
+
+      //- Buttons
+      .btn-row
+        button(type="submit") Submit Form →
+        button(type="reset") Clear

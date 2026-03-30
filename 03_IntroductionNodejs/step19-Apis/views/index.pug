@@ -1,0 +1,100 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Heroes
+  link(rel='stylesheet' href='/index.css')
+// Navigation Bar
+nav.navbar
+  .nav-title ZonetoCode
+  #menuToggle.nav-toggle &#x2630;
+  ul#navLinks.nav-links
+    li
+      a(href='#home') Pug
+    li
+      a(href='#login') Template
+    li
+      a(href='#contact') Contact Us
+    li
+      a(href='#about') About Us
+// Hero Header
+.page-header
+  .page-header-content
+    h1 Heroes List
+    p Manage your heroes with CRUD operations
+// Alert Box
+#alert-box.alert-box(style='display: none')
+  span#alert-msg
+  button(onclick='closeAlert()') &#x2715;
+// Add Form
+#add-hero.form-container
+  .form-header
+    h2 ADD HERO
+  .form-body
+    .form-section-title Your Details
+    .form-row
+      .form-group
+        input#title(type='text' placeholder='Title')
+      .form-group
+        input#email(type='text' placeholder='Email')
+    .form-row
+      .form-group.full-width
+        input#fname(type='text' placeholder='First Name')
+    .form-section-title Hero Details
+    .form-row
+      .form-group
+        input#lname(type='text' placeholder='Last Name')
+      .form-group
+        input#city(type='text' placeholder='City')
+    .form-actions
+      button.save-btn(onclick='saveHero()') Save
+      button.clear-btn(onclick='clearForm()') Clear
+// Hidden ID
+input#heroId(type='hidden')
+// Update Form
+#update-form.form-container(style='display: none')
+  .form-header
+    h2 UPDATE HERO
+  .form-body
+    .form-section-title Your Details
+    .form-row
+      .form-group
+        input#u-title(type='text' placeholder='Title')
+      .form-group
+        input#u-email(type='text' placeholder='Email')
+    .form-row
+      .form-group.full-width
+        input#u-fname(type='text' placeholder='First Name')
+    .form-section-title Hero Details
+    .form-row
+      .form-group
+        input#u-lname(type='text' placeholder='Last Name')
+      .form-group
+        input#u-city(type='text' placeholder='City')
+    .form-actions
+      button.save-btn(onclick='updateHero()') Update
+      button.clear-btn(onclick='cancelUpdate()') Cancel
+// Table
+#list
+  button#back-btn.back-btn(style='display: none' onclick='cancelUpdate()')
+    | &larr; Back to Add Hero
+  table#hero-table
+    thead
+      tr
+        th Sl No
+        th Title
+        th First Name
+        th Last Name
+        th Email
+        th City
+        th Edit
+        th Delete
+    tbody#herogrid
+// ✅ Scripts loaded at bottom
+script(src='lib/jquery-4.0.0.js')
+script(src='js/alert.js')
+script(src='js/render.js')
+script(src='js/save.js')
+script(src='js/edit.js')
+script(src='js/delete.js')
+script(src='js/main.js')

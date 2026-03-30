@@ -1,0 +1,7 @@
+mojor update  .minor update .bug fix
+1.0.0
+but node is symantic versioning
+
+
+^ up and till  minor will work major will  not work
+~  

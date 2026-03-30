@@ -1,0 +1,38 @@
+https://jasmine.github.io/setup/nodejs.html 
+
+// user.test.js
+
+describe("User Profile Validation", () => {
+  let user;
+
+  // Set up data before each test to keep things DRY
+  beforeEach(() => {
+    user = {
+      firstname: "bruce",
+      lastname: "wayne",
+      role: "admin"
+    };
+  });
+
+  test("should correctly identify the user's first name", () => {
+    // .toBe is for exact equality
+    expect(user.firstname).toBe("bruce");
+    
+    // .toMatch is great for partial strings or regex
+    expect(user.firstname).toMatch(/bruce/);
+  });
+
+  it("should have a firstname property of type string", () => {
+    // 'it' is just an alias for 'test' - use whichever reads better!
+    expect(typeof user.firstname).toBe("string");
+    expect(user.firstname).toEqual("bruce");
+  });
+
+  test("should handle case sensitivity correctly", () => {
+    // Example of a failing check if we weren't careful
+    expect(user.firstname).not.toBe("Bruce");
+  });
+});
+
+///  test ing library assertion is build in testing library
+///  Mocha is testing library  machers is chai 

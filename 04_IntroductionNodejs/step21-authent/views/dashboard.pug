@@ -1,0 +1,244 @@
+//- doctype html
+//- html(lang="en")
+//-   head
+//-     meta(charset="UTF-8")
+//-     meta(name="viewport" content="width=device-width, initial-scale=1.0")
+//-     title Dashboard | ZonetoCode
+//-     link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0")
+//-     style.
+//-       * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+//-       body { background-color: #f4f7f6; min-height: 100vh; display: flex; flex-direction: column; }
+      
+//-       /* --- UNIFIED NAVIGATION --- */
+//-       .navbar { 
+//-         background: #008080; padding: 0.8rem 2rem; display: flex; 
+//-         justify-content: space-between; align-items: center; 
+//-         box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; 
+//-         top: 0; z-index: 1000; transition: all 0.3s ease;
+//-       }
+//-       .navbar.scrolled { background: rgba(0, 128, 128, 0.9); backdrop-filter: blur(8px); }
+//-       .navbar strong { color: white; font-size: 1.4rem; letter-spacing: 1px; cursor: pointer; }
+      
+//-       .nav-links { display: flex; align-items: center; }
+//-       .nav-links a { 
+//-         color: white; text-decoration: none; margin-left: 25px; 
+//-         font-size: 14px; font-weight: 500; transition: 0.3s; opacity: 0.8;
+//-       }
+//-       .nav-links a:hover { opacity: 1; }
+//-       .nav-links .profile-link { background: rgba(255,255,255,0.2); padding: 6px 15px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.3); }
+
+//-       .menu-icon { color: white; cursor: pointer; display: none; font-size: 28px; }
+
+//-       @media (max-width: 768px) {
+//-         .menu-icon { display: block; z-index: 1001; }
+//-         .nav-links { 
+//-           display: flex; flex-direction: column; justify-content: center;
+//-           position: fixed; top: 0; right: -100%; width: 75%; height: 100vh;
+//-           background: #004d4d; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+//-         }
+//-         .nav-links.active { right: 0; }
+//-         .nav-links a { margin: 15px 0; font-size: 1.2rem; margin-left: 0; }
+//-       }
+
+//-       /* --- DASHBOARD LAYOUT --- */
+//-       .container { max-width: 1100px; margin: 30px auto; width: 95%; flex: 1; }
+//-       .welcome-section { margin-bottom: 30px; }
+//-       .welcome-section h1 { color: #333; font-size: 1.8rem; }
+//-       .welcome-section p { color: #666; }
+
+//-       /* Stats Cards */
+//-       .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 30px; }
+//-       .stat-card { 
+//-         background: white; border-radius: 12px; padding: 25px; 
+//-         display: flex; align-items: center; gap: 20px;
+//-         box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #eee;
+//-       }
+//-       .stat-icon { width: 50px; height: 50px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+//-       .blue { background: #e3f2fd; color: #2196f3; }
+//-       .green { background: #e8f5e9; color: #4caf50; }
+//-       .orange { background: #fff3e0; color: #ff9800; }
+      
+//-       .stat-info h4 { font-size: 0.85rem; color: #888; text-transform: uppercase; margin-bottom: 5px; }
+//-       .stat-info p { font-size: 1.4rem; font-weight: 700; color: #333; }
+
+//-       /* Table / Activity Section */
+//-       .content-card { background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #eee; }
+//-       .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+//-       .card-header h3 { font-size: 1.1rem; color: #333; }
+      
+//-       .table-wrapper { overflow-x: auto; }
+//-       table { width: 100%; border-collapse: collapse; text-align: left; }
+//-       th { padding: 12px; color: #888; font-size: 13px; text-transform: uppercase; border-bottom: 1px solid #eee; }
+//-       td { padding: 15px 12px; color: #444; font-size: 14px; border-bottom: 1px solid #f9f9f9; }
+//-       .status-pill { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+//-       .status-active { background: #e8f5e9; color: #2e7d32; }
+
+//-       footer { background: #004d4d; color: white; padding: 30px; text-align: center; margin-top: auto; }
+
+//-   body
+//-     nav.navbar#navbar
+//-       strong(onclick="window.location.href='/'") ZonetoCode
+//-       span.material-symbols-outlined.menu-icon#menuBtn(onclick="toggleMenu()") menu
+//-       .nav-links#navLinks
+//-         a(href="/profile").profile-link Profile
+//-         a(href="/logout") Logout
+
+//-     .container
+//-       .welcome-section
+//-         h1 Welcome back, #{user ? user.firstname : 'Developer'}! 🚀
+//-         p Here is what's happening with your projects today.
+
+//-       // Statistics Overview
+//-       .stats-grid
+//-         .stat-card
+//-           .stat-icon.blue
+//-             span.material-symbols-outlined description
+//-           .stat-info
+//-             h4 Total Projects
+//-             p 12
+        
+//-         .stat-card
+//-           .stat-icon.green
+//-             span.material-symbols-outlined task_alt
+//-           .stat-info
+//-             h4 Completed
+//-             p 08
+        
+//-         .stat-card
+//-           .stat-icon.orange
+//-             span.material-symbols-outlined pending_actions
+//-           .stat-info
+//-             h4 Pending
+//-             p 04
+
+//-       // Recent Activity Table
+//-       .content-card
+//-         .card-header
+//-           h3 Recent Project Activity
+//-           button(style="background: none; border: 1px solid #008080; color: #008080; padding: 5px 12px; border-radius: 6px; cursor: pointer; font-size: 12px;") View All
+        
+//-         .table-wrapper
+//-           table
+//-             thead
+//-               tr
+//-                 th Project Name
+//-                 th Date Created
+//-                 th Category
+//-                 th Status
+//-             tbody
+//-               tr
+//-                 td MERN Authentication
+//-                 td Mar 24, 2026
+//-                 td Web App
+//-                 td: span.status-pill.status-active Active
+//-               tr
+//-                 td Responsive Portfolio
+//-                 td Feb 12, 2026
+//-                 td Design
+//-                 td: span.status-pill.status-active Active
+//-               tr
+//-                 td SQL Database Script
+//-                 td Jan 05, 2026
+//-                 td Backend
+//-                 td: span.status-pill.status-active Active
+
+//-     footer
+//-       p © 2026 ZonetoCode. Full-Stack Engineering Trainee Dashboard.
+
+//-     script.
+//-       // Navbar Scroll Effect
+//-       window.onscroll = function() {
+//-         const navbar = document.getElementById('navbar');
+//-         if (window.pageYOffset > 50) {
+//-           navbar.classList.add('scrolled');
+//-         } else {
+//-           navbar.classList.remove('scrolled');
+//-         }
+//-       };
+
+//-       // Mobile Menu Toggle
+//-       function toggleMenu() {
+//-         const nav = document.getElementById('navLinks');
+//-         const icon = document.getElementById('menuBtn');
+//-         nav.classList.toggle('active');
+//-         icon.textContent = nav.classList.contains('active') ? 'close' : 'menu';
+//-       }
+
+
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Dashboard | ZonetoCode
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined")
+    link(rel="stylesheet", href="/css/index.css")
+  body
+    nav.navbar#navbar
+      strong(onclick="window.location.href='/'") ZonetoCode
+      span.material-symbols-outlined.menu-icon#menuBtn(onclick="toggleMenu()") menu
+      .nav-links#navLinks
+        a(href="/profile").profile-link Profile
+        a(href="/logout") Logout
+
+    .container.dashboard-container
+      .welcome-section
+        h1 Welcome back, #{user ? user.firstname : 'Developer'}! 🚀
+        p Here is what's happening with your projects today.
+
+      // Statistics Overview
+      .stats-grid
+        .stat-card
+          .stat-icon.blue: span.material-symbols-outlined description
+          .stat-info
+            h4 Total Projects
+            p 12
+        
+        .stat-card
+          .stat-icon.green: span.material-symbols-outlined task_alt
+          .stat-info
+            h4 Completed
+            p 08
+        
+        .stat-card
+          .stat-icon.orange: span.material-symbols-outlined pending_actions
+          .stat-info
+            h4 Pending
+            p 04
+
+      // Recent Activity Table
+      .content-card
+        .card-header
+          h3 Recent Project Activity
+          button.btn-view-all View All
+        
+        .table-wrapper
+          table
+            thead
+              tr
+                th Project Name
+                th Date Created
+                th Category
+                th Status
+            tbody
+              tr
+                td MERN Authentication
+                td Mar 24, 2026
+                td Web App
+                td: span.status-pill.status-active Active
+              tr
+                td Responsive Portfolio
+                td Feb 12, 2026
+                td Design
+                td: span.status-pill.status-active Active
+              tr
+                td SQL Database Script
+                td Jan 05, 2026
+                td Backend
+                td: span.status-pill.status-active Active
+
+    footer
+      p © 2026 ZonetoCode. Full-Stack Engineering Trainee Dashboard.
+
+    script(src="/js/script.js")

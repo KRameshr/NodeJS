@@ -1,0 +1,6 @@
+
+Hello Ramesh,
+This is a sample text file for testing Node.js file system operations.
+You are learning Node.js step by step, including reading files, working with buffers, and converting data using toString().
+Keep practicing and building projects. You are getting closer to your first developer job!
+All the best 🚀
