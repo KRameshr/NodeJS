@@ -57,23 +57,31 @@ const login = async (req, res) => {
 
 const updatePassword = async (req, res) => {
   try {
-    const { username, oldPassword, newPassword } = req.body;
+    const { oldPassword, newPassword } = req.body;
 
-    if (!oldPassword || !newPassword) {
-      return res.status(400).json({ message: "Both passwords required" });
+    // Use the ID attached by the 'auth' middleware
+    const userId = req.user._id;
+
+    // Find user by ID and include password for comparison
+    const user = await User.findById(userId).select("+password");
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
     }
 
-    const user = await User.findOne({ username });
-    if (!user) return res.status(404).json({ message: "User not found" });
-
+    // Verify old password
     const isMatch = await bcrypt.compare(oldPassword, user.password);
-    if (!isMatch)
+    if (!isMatch) {
       return res.status(400).json({ message: "Old password incorrect" });
+    }
 
-    user.password = newPassword; // Middleware hashes this automatically
+    // Update and save (triggers your hashing .pre("save") hook)
+    user.password = newPassword;
     await user.save();
 
-    res.status(200).json({ success: true, message: "Password updated! ✅" });
+    res
+      .status(200)
+      .json({ success: true, message: "Password updated securely! ✅" });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
