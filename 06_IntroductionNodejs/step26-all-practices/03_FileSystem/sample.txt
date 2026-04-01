@@ -1,0 +1,31 @@
+In Node.js,
+ the File System (fs) module is a core built-in library 
+ that allows your applications to interact with files and directories on your operating system. 
+ Because it is a core module, it requires no external installation; 
+ you can simply import it using const fs = require('fs');.Core CapabilitiesThe 
+ fs module provides an API modeled after standard POSIX functions, 
+ enabling a wide range of operations:
+ File Management: Read, write, update, rename, and delete files.Directory 
+ Management: Create, remove, and list the contents of directories.Metadata & 
+ Permissions: Retrieve file statistics (size, creation date) and modify access 
+ permissions.Monitoring: Watch for real-time changes in files or 
+ directories.Synchronous vs. Asynchronous OperationsOne of 
+ the most important concepts in Node.js file handling is the choice 
+ between synchronous (blocking) and asynchronous (non-blocking) 
+ methods.FeatureSynchronous (*Sync)AsynchronousExecutionBlocks 
+ the event loop until the task is finished.Runs in the background, 
+ allowing other code to execute.Use CaseIdeal for simple scripts or 
+ startup tasks like loading configuration.Preferred for 
+ high-performance servers to maintain responsiveness.HandlingReturns 
+ results directly or throws errors.Uses callback functions or 
+ Promises (via fs.promises).Advanced 
+ File Handling: StreamsFor large files that might exceed available memory, 
+ Node.js provides Streams. Methods like fs.createReadStream() 
+ and fs.createWriteStream() allow you to process data in small chunks 
+ rather than loading the entire file at once. This prevents blocking 
+ the event loop and ensures your application remains efficient under 
+ heavy data loads.Would you like to see a specific example of 
+ directory management or how to use Promises with the fs module?
+
+
+ wreeeldddffee

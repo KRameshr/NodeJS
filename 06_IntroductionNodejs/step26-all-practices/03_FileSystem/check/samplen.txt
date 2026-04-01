@@ -1,0 +1,7 @@
+In Node.js,
+ the File System (fs) module is a core built-in library 
+ that allows your applications to interact with files and directories on your operating system. 
+ Because it is a core module, it requires no external installation; 
+ you can simply import it using const fs = require('fs');.Core CapabilitiesThe 
+ fs module provides an API modeled after standard POSIX functions, 
+ enabling a wide range of operations:
