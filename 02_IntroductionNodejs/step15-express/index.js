@@ -26,7 +26,7 @@ let path = require("node:path");
 const PORT = process.env.PORT || config.port;
 const app = express();
 
-// Middleware to parse JSON bodies in incoming requests. This allows us to access the data sent in the request body as a JavaScript object using req.body.
+// Middleware  is software that acts as a bridge or a "middleman" between two applications, systems, or services
 
 // app.use("/assets", express.static(path.join(__dirname, "assets"))); //it is forwarding the request to the images folder when the client requests for /assets. So, when the client requests for /assets/01-smallsize.png, it will look for the file in the images folder and serve it if found.
 // app.use(express.static(__dirname)); // Serve static files (CSS, JS, images)
