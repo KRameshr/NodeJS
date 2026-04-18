@@ -1,0 +1,97 @@
+npm init -y
+npm install express -save    
+npm install express -save-dev  only use to develpment
+
+
+What is Routing in Computer Networks?
+
+Routing is the process of selecting the best path for data packets to travel from a source device to a destination device across one or more networks.
+
+
+
+1. Static Routing (Manual Routing)
+        In static routing, routes are manually configured by the network administrator.
+
+        app.get('/home', (req, res) => {
+        res.send('This is Home Page');
+        });
+
+
+2. Dynamic Routing (Automatic Routing)
+    Routers automatically learn and update routes using routing protocols.
+
+    app.get('/user/:id', (req, res) => {
+    res.send(`User ID is ${req.params.id}`);
+    });
+
+3. Default Routing
+    A fallback route used when no specific route is found.
+    app.get('/', (req, res) => {
+    res.send('Welcome to Home Page');
+    });
+
+    app.use((req, res) => {
+    res.send("404 Page Not Found");
+    });
+
+
+Routing Algorithms
+1. Distance Vector (RIP uses this)
+    Each router shares its routing table with neighbors
+    Chooses path with least “hops”
+
+
+    Shares routing table with neighbors, uses hop count
+
+        ✔ Example:
+
+        Imagine 3 routers:
+
+        A —— B —— C
+        A wants to send data to C
+        A does not know full network
+        B tells A: “I can reach C in 1 hop”
+
+        So A updates:
+
+        A → B → C (2 hops)
+        📌 Real Protocol:
+
+        RIP (Routing Information Protocol)
+
+2. Link State (OSPF uses this)
+    Each router builds full network map
+    Uses shortest path algorithm (Dijkstra’s)
+
+  Builds full topology, uses Dijkstra shortest path
+
+    ✔ Example:
+        A —— B —— C
+        \         /
+        \—— D ——/
+
+        Now A knows all paths:
+
+        A → B → C = 2 hops
+        A → D → C = 2 hops
+
+        👉 If link A-B is slow or down, A instantly chooses A-D-C
+
+        📌 Real Protocol:
+
+        OSPF (Open Shortest Path First)
+
+3. Flooding
+    Sends packet to ALL neighbors
+    Very reliable but inefficient
+
+    Sends packet to all neighbors, ensures delivery but wastes bandwidth
+
+    ✔ Example:
+    A sends packet → B, D
+    B sends → C, D
+    D sends → B, C
+
+    If destination is C:
+
+    C receives multiple copies of same packet
