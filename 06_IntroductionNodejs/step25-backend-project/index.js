@@ -7,7 +7,10 @@ const PORT = 5000;
 
 // Middleware
 app.use(express.json());
+
+//database
 connectDB();
+
 // Routes
 app.use("/", routes);
 app.use("/api/auth", authRoutes);

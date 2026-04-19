@@ -1,30 +1,43 @@
 const express = require("express");
+const { url } = require("inspector");
+const path = require("path");
 
 const app = express();
 
+// set
+app.set("view engin", "ejs");
+
+//  middel ware
+app.use(express.urlencoded({ extended: true }));
+
+// routes
+
+// static
+app.get("/form", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "index.html"));
+});
+
+app.post("/form", (req, res) => {
+  console.log("data is", req.body);
+  res.send("data is send successfull");
+});
+
 app.get("/", (req, res) => {
-  //   res.end("Hello world");
-  res.send("Hello world Home page");
+  res.render("index.ejs", { name: "ramesh", age: 20 });
 });
 
 app.get("/about", (req, res) => {
-  //   res.end("Hello world");
-  res.send("Hello world about page");
+  // res.send("about");
+  res.end("B");
 });
-
-app.get("/contact", (req, res) => {
-  //   res.end("Hello world");
-  res.send("Hello world contact page");
-});
-
 app.use((req, res) => {
-  res.send("404 Page Not Found");
+  res.send("not Found");
 });
 
-app.listen(3000, "localhost", (err) => {
+app.listen(8000, "localhost", (err) => {
   if (err) {
     console.log(err);
   } else {
-    console.log("the port running at 3000");
+    console.log("SuccessFull");
   }
 });

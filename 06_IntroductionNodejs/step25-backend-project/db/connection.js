@@ -13,7 +13,7 @@ const connectDB = () => {
 
   mongoose
     .connect(dbString)
-    .then(() => console.log("DB Connected ✅"))
+    .then(() => console.log("DB Connected"))
     .catch((err) => console.log("DB Error:", err));
 };
 

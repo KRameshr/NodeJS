@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      form {
+        display: block;
+        text-align: center;
+        justify-content: center;
+      }
+      input {
+        padding: 0.5rem;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form action="/form" method="post">
+      <h2>Submit the form data</h2>
+      <label for="fist_name">Fist Name:</label>
+      <input type="text" id="fist_name" name="fist_name" />
+      <br /><br />
+      <label for="last_name">Fist Name:</label>
+      <input type="text" id="last_name" name="last_name" />
+      <br /><br />
+      <label for="meassage">meassage</label>
+      <textarea name="message" id="message" rows="10" cols="30"></textarea>
+      <br /><br />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
